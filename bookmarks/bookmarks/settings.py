@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse_lazy
+
 
 """
 Django settings for bookmarks project.
@@ -33,13 +33,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account',
+    
+    
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,7 +107,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#registration and password config
+from django.core.urlresolvers import reverse_lazy
 
-LOGIN_REDIRECT_URL= reverse_lazy('dashboard')
-LOGIN_URL= reverse_lazy('login')
-LOGOUT_URL= reverse_lazy('logout')
+LOGOUT_URL = reverse_lazy('logout')
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
+LOGIN_URL = reverse_lazy('login')
+
+#Email backend to indicate the class to use to send emails
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
+

@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
+    'images',
     
     
 
@@ -107,6 +109,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# for django to serve media files uploaded to users
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 #registration and password config
 from django.core.urlresolvers import reverse_lazy
 
@@ -116,6 +122,15 @@ LOGIN_URL = reverse_lazy('login')
 
 #Email backend to indicate the class to use to send emails
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS= (
+            'django.contrib.auth.backends.ModelBackend',
+            'account.authentication.EmailAuthBackend'
+
+)
+
+
+
 
 
 
